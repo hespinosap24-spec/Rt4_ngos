@@ -21,9 +21,15 @@ rm glpi-10.0.19.tgz # Limpiar el comprimido
 echo "--- 4. Configurando rutas personalizadas (Hardening) ---"
 
 # Crear directorios necesarios
-mkdir -p /etc/glpi
-mkdir -p /var/lib/glpi
-mkdir -p /var/log/glpi
+sudo mkdir -p /etc/glpi
+sudo mkdir -p /var/lib/glpi_/log
+sudo mkdir -p /var/log/glpi
+
+sudo chown -rw www-data:www-data /var/lib/glpi
+
+# 3. Aplicar permisos de escritura correctos
+sudo find /var/lib/glpi -type d -exec chmod 775 {} \;
+sudo find /var/lib/glpi -type f -exec chmod 664 {} \;
 
 # Crear archivo downstream.php
 cat <<EOF > /var/www/html/glpi/inc/downstream.php
