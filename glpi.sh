@@ -25,7 +25,9 @@ sudo mkdir -p /etc/glpi
 sudo mkdir -p /var/lib/glpi_/log
 sudo mkdir -p /var/log/glpi
 
-sudo chown -rw www-data:www-data /var/lib/glpi
+sudo mkdir -p /var/lib/glpi/_{cache,cron,dumps,graphs,lock,pictures,plugins,rss,sessions,tmp,uploads,inventories,themes}
+
+sudo chown -R www-data:www-data /var/lib/glpi
 
 # 3. Aplicar permisos de escritura correctos
 sudo find /var/lib/glpi -type d -exec chmod 775 {} \;
