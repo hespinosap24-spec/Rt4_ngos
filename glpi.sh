@@ -81,7 +81,7 @@ find /var/log/glpi -type f -exec chmod 0644 {} \;
 find /var/log/glpi -type d -exec chmod 0755 {} \;
 
 echo "--- Instalación finalizada ---"
-cat <<EOF > /etc/apache2/sites-available/glpi.conf:
+cat <<EOF > /etc/apache2/sites-available/glpi.conf
 <VirtualHost *:80>
     ServerName yourglpi.yourdomain.com
     DocumentRoot /var/www/html/glpi/public
