@@ -9,10 +9,6 @@ echo "--- 1. Actualizando sistema e instalando dependencias ---"
 apt update
 apt install -y apache2 mariadb-server php php-{apcu,cli,common,curl,gd,imap,ldap,mysql,xmlrpc,xml,mbstring,bcmath,intl,zip,redis,bz2,soap,cas} libapache2-mod-php
 
-echo "--- 2. Configuración de Base de Datos ---"
-# Nota: mysql_secure_installation es interactivo. 
-# Deberás configurar la contraseña de root manualmente cuando se te pida
-
 echo "Cargando zonas horarias en MariaDB..."
 mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql mysql
 
