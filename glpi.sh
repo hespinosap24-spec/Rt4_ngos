@@ -81,4 +81,17 @@ find /var/log/glpi -type f -exec chmod 0644 {} \;
 find /var/log/glpi -type d -exec chmod 0755 {} \;
 
 echo "--- Instalación finalizada ---"
-echo "Recuerda configurar el VirtualHost de Apache para apuntar a /var/www/html/glpi/public"
+cat <<EOF > /etc/apache2/sites-available/glpi.conf:
+<VirtualHost *:80>
+    ServerName yourglpi.yourdomain.com
+    DocumentRoot /var/www/html/glpi/public
+    <Directory /var/www/html/glpi/public>
+        Require all granted
+        RewriteEngine On
+        RewriteCond %{HTTP:Authorization} ^(.+)$
+        RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteRule ^(.*)$ index.php [QSA,L]
+    </Directory>
+</VirtualHost>
+EOF
