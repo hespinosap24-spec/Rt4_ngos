@@ -44,7 +44,7 @@ EOF
 
 # Mover directorios originales a sus nuevas ubicaciones
 mv /var/www/html/glpi/config/ /etc/glpi/
-mv /var/www/html/glpi/files/ /var/lib/glpi/
+mv /var/www/html/glpi/files/* /var/lib/glpi/
 # Nota: El log se mueve de forma específica
 mv /var/lib/glpi/_log /var/log/glpi || true
 
