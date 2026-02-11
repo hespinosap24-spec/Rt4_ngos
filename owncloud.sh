@@ -42,6 +42,7 @@ echo "--- 5. Configurando Apache ---"
 sudo cat <<EOF | sudo tee /etc/apache2/sites-available/owncloud.conf
 <VirtualHost *:80>
     Alias /owncloud "/var/www/owncloud/"
+    DirectoryIndex index.php
     <Directory /var/www/owncloud/>
         Options +FollowSymlinks
         AllowOverride All
